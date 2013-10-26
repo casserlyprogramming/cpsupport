@@ -19,7 +19,7 @@
 function create_status_taxonomy()
 {
     $labels = array(
-        'name' => 'Ticket Statuses',
+        'name' => 'Ticket Status',
         'singular_name' => 'Ticket Status',
         'menu_name' => 'Statuses',
         'add_new_item' => 'Add New Status'        
