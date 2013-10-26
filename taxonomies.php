@@ -22,7 +22,7 @@ function create_status_taxonomy()
         'name' => 'Ticket Status',
         'singular_name' => 'Ticket Status',
         'menu_name' => 'Statuses',
-        'add_new_item' => 'Add New Status'        
+        'add_new_item' => 'Add New Status',        
     );
     $capabilities = array(
         'manage_terms',
@@ -35,6 +35,7 @@ function create_status_taxonomy()
         'public' => true,
         'show_admin_column' => true,
         'capabilities' => $capabilities,
+        'hierarchical' => true,
         
     );
     register_taxonomy('cp_ticket_status', 'cp_ticket', $args);    
@@ -61,7 +62,7 @@ function create_type_taxonomy()
         'public' => true,
         'show_admin_column' => true,
         'capabilities' => $capabilities,
-        
+        'hierarchical' => true,
     );
     register_taxonomy('cp_ticket_types', 'cp_ticket', $args); 
     
@@ -88,9 +89,9 @@ function create_product_taxonomy()
         'public' => true,
         'show_admin_column' => true,
         'capabilities' => $capabilities,
-        
+        'hierarchical' => true,
     );
-    register_taxonomy('cp_product', 'cp_ticket', $args); 
+    register_taxonomy('cp_support_product', 'cp_ticket', $args); 
     
 }
 add_action('init', 'create_product_taxonomy');
