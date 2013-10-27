@@ -18,7 +18,7 @@ function create_ticket_type()
     $labels_array = array(
         'name' => __('Tickets'),
         'singular_name' => __('Ticket'),
-        'menu_name' => __('Ticket'),
+        'menu_name' => __('Tickets'),
         'search_items' => __('Tickets'),
         'not_found' => __('Ticket'),
         'add_new_item' => __('Add New Ticket'),        
@@ -31,13 +31,26 @@ function create_ticket_type()
         'custom-fields',
         'comments'
     );
+    $taxonomies = array(
+        'cp_support_product',
+        'cp_ticket_types',
+        'cp_ticket_status'
+    );
+    $post_formats = array(
+        'aside',
+        'status',
+        'chat'
+    );
     $args = array(
         'label' => 'CP Tickets',
         'labels' => $labels_array,
         'description' => 'Tickets of any type that you need to keep track of',
         'public' => true,
         'menu_icon' => plugins_url( 'images/ticketicon16.png' , __FILE__ ),
-        'supports' => $supports_array        
+        'supports' => $supports_array,
+        'taxonomies' => $taxonomies,
+        'rewrite' => false,
+        'post-formats' => $post_formats,
     );
     register_post_type('cp_ticket', $args);
 }
