@@ -70,14 +70,21 @@ function ticket_add_sc($atts)
 {
     $result = '';
     ob_start();
-    
+    global $current_user;
+    get_currentuserinfo();
+    // If they are not logged in then we just exit out of it...
+    if ( ! $current_user->exists() )
+    {
+        echo 'Sorry but you have to be logged in to use this feature...';
+        return $result;
+    }
     // Get the lists of taxonomies...
     $types = get_terms('cp_ticket_types', array('hide_empty' => false));
     $products = get_terms('cp_support_product', array('hide_empty' => false));
     $statuses = get_terms('cp_ticket_status', array('hide_empty' => false));
-    
+    $page_url = ( isset( $_SERVER["HTTPS"] ) && $_SERVER["HTTPS"] == "on" ? "https://" : "http://" ).$_SERVER["SERVER_NAME"].strip_tags( $_SERVER["REQUEST_URI"] );
     echo
-    '<form method="POST" action="'. plugins_url( 'api/insert_ticket.php' , __FILE__ ) . '">
+    '<form method="POST" action="' . $page_url . '">
        <table> 
         <tr>
             <td>
@@ -104,7 +111,7 @@ function ticket_add_sc($atts)
             
     foreach($products as $prod)
     {
-        echo '<option value="' . $prod->slug . '">' . $prod->name . '</option>';
+        echo '<option value="' . $prod->term_id . '">' . $prod->name . '</option>';
     }
 
     echo   '</select>
@@ -118,7 +125,7 @@ function ticket_add_sc($atts)
             <select name="edStatus">';
     foreach($statuses as $stat)
     {
-        echo '<option value="' . $stat->slug . '">' . $stat->name . '</option>';
+        echo '<option value="' . $stat->term_id . '">' . $stat->name . '</option>';
     }
     
     echo '</select>
@@ -132,13 +139,36 @@ function ticket_add_sc($atts)
             <select name="edType">';
     foreach($types as $typ)
     {
-        echo '<option value="' . $typ->slug . '">' . $typ->name . '</option>';
+        echo '<option value="' . $typ->term_id . '">' . $typ->name . '</option>';
     }
     echo '  </select>
 	</td>
         </tr></table>
-<input type="submit" value="Create Ticket"/>        
-</form>';
+        <input type="submit" value="Create Ticket"/>        
+        </form>';
+    if(isset($_POST['edTitle']))
+    {                   
+        $this_user_id = $current_user->ID;
+        $tax_arr = array(
+            'cp_ticket_status' => array( $_POST['edStatus'] ),
+            'cp_ticket_types' => array( $_POST['edType'] ),
+            'cp_support_product' => array( $_POST['edProduct'] )
+        );
+        
+        // If we get here then the user is logged in and we have their id...
+        $new_post_arr = array(
+            'comment_status' => 'open',
+            'ping_status' => 'closed',
+            'post_author' => $this_user_id,
+            'post_content' => $_POST['edDetails'],
+            'post_name' => sanitize_title($_POST['edTitle']),
+            'post_status' => 'publish',
+            'post_title' => $_POST['edTitle'],
+            'post_type' => 'cp_ticket',
+            'tax_input' => $tax_arr
+         );
+         wp_insert_post($new_post_arr);
+    }
     return $result;
 }
 add_shortcode('cp_ticket_add', 'ticket_add_sc');
