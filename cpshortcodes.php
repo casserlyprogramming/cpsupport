@@ -169,6 +169,7 @@ function ticket_add_sc()
             'tax_input' => $tax_arr
          );
          wp_insert_post($new_post_arr);
+         echo 'Thanks for sending us this request. We will endevour to reply to your ticket as soon as possible.';
     }
     return $result;
 }
