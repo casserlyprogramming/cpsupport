@@ -3,7 +3,7 @@
 	Plugin Name: CP Support
 	Plugin URI: http://www.casserlyprogramming.com
 	Description: A powerful support ticket, bug and feature tracker
-	Version: 0.0.1
+	Version: 1.0.0
 	Author: Daniel Casserly
 	Author URI: http://dandalfprogramming.blogspot.co.uk/
 */

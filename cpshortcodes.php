@@ -66,7 +66,8 @@ function tickets_grid_sc($atts)
 }
 add_shortcode('cp_tickets_grid', 'tickets_grid_sc');
 
-function ticket_add_sc($atts)
+
+function ticket_add_sc()
 {
     $result = '';
     ob_start();
