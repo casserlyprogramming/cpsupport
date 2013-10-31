@@ -21,7 +21,7 @@
 //Status Taxonomy
 //--------------------------------------------------------------
 // Add Status Page
-function add_status_custom_fields() {
+function cpt_add_status_custom_fields() {
 	// This will add the Priority to the "add new" form...
 	?>
 	<div class="form-field">
@@ -43,10 +43,10 @@ function add_status_custom_fields() {
 	</div>
 <?php
 }
-add_action( 'cp_ticket_status_add_form_fields', 'add_status_custom_fields');
+add_action( 'cp_ticket_status_add_form_fields', 'cpt_add_status_custom_fields');
 
 // Edit term page
-function edit_status_custom_fields($term) {
+function cpt_edit_status_custom_fields($term) {
  
 	// put the term ID into a variable
 	$t_id = $term->term_id;
@@ -78,9 +78,9 @@ function edit_status_custom_fields($term) {
         </tr>
 <?php
 }
-add_action( 'cp_ticket_status_edit_form_fields', 'edit_status_custom_fields');
+add_action( 'cp_ticket_status_edit_form_fields', 'cpt_edit_status_custom_fields');
 // Save the Status fields....
-function save_status_fields( $term_id ) {
+function cpt_save_status_fields( $term_id ) {
 	if ( isset( $_POST['term_meta'] ) ) {
 		$t_id = $term_id;
 		$term_meta = get_option( "status_$t_id" );
@@ -94,15 +94,15 @@ function save_status_fields( $term_id ) {
 		update_option( "status_$t_id", $term_meta );
 	}
 }  
-add_action( 'edited_cp_ticket_status', 'save_status_fields');  
-add_action( 'create_cp_ticket_status', 'save_status_fields');
+add_action( 'edited_cp_ticket_status', 'cpt_save_status_fields');  
+add_action( 'create_cp_ticket_status', 'cpt_save_status_fields');
 
 
 //--------------------------------------------------------------
 //Product Taxonomy
 //--------------------------------------------------------------
 // Add Status Page
-function add_product_custom_fields() {
+function cpt_add_product_custom_fields() {
 	// This will add the Priority to the "add new" form...
 	?>
 	<div class="form-field">
@@ -112,10 +112,10 @@ function add_product_custom_fields() {
 	</div>
 <?php
 }
-add_action( 'cp_support_product_add_form_fields', 'add_product_custom_fields');
+add_action( 'cp_support_product_add_form_fields', 'cpt_add_product_custom_fields');
 
 // Edit term page
-function edit_product_custom_fields($term) {
+function cpt_edit_product_custom_fields($term) {
  
 	// put the term ID into a variable
 	$t_id = $term->term_id;
@@ -131,9 +131,9 @@ function edit_product_custom_fields($term) {
 	</tr>        
 <?php
 }
-add_action( 'cp_support_product_edit_form_fields', 'edit_product_custom_fields');
+add_action( 'cp_support_product_edit_form_fields', 'cpt_edit_product_custom_fields');
 // Save the Status fields....
-function save_product_fields( $term_id ) {
+function cpt_save_product_fields( $term_id ) {
 	if ( isset( $_POST['term_meta'] ) ) {
 		$t_id = $term_id;
 		$term_meta = get_option( "status_$t_id" );
@@ -147,6 +147,6 @@ function save_product_fields( $term_id ) {
 		update_option( "sproduct_$t_id", $term_meta );
 	}
 }  
-add_action( 'edited_cp_support_product', 'save_product_fields');  
-add_action( 'create_cp_support_product', 'save_product_fields');
+add_action( 'edited_cp_support_product', 'cpt_save_product_fields');  
+add_action( 'create_cp_support_product', 'cpt_save_product_fields');
 ?>

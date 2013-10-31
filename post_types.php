@@ -13,7 +13,7 @@
  * These include: 
  * Tickets
 */
-function create_ticket_type()
+function cpt_create_ticket_type()
 {
     $labels_array = array(
         'name' => __('Tickets'),
@@ -54,10 +54,10 @@ function create_ticket_type()
     );
     register_post_type('cp_ticket', $args);
 }
-add_action('init', 'create_ticket_type');
+add_action('init', 'cpt_create_ticket_type');
 
 // Adds the header image to the Tickets...
-function plugin_header() {
+function cpt_plugin_header() {
         global $post_type;
     ?>
     <style>
@@ -67,6 +67,6 @@ function plugin_header() {
         </style>
         <?php
 }
-add_action('admin_head', 'plugin_header');
+add_action('admin_head', 'cpt_plugin_header');
 
 ?>

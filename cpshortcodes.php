@@ -9,14 +9,13 @@
  * #########   ####
  *    ######   ####
  * 
- * 
  * This file creates shortcodes for the support plugin
  * These include:
  *      Showing Various Tickets (by the different types or products, ordered by status (descending)
  *      Form for creating a new ticket (have optional link in the above shortcode for this)
  *      
  */
-function tickets_grid_sc($atts)
+function cpt_tickets_grid_sc($atts)
 {
     ob_start();
     $result = '';
@@ -64,10 +63,10 @@ function tickets_grid_sc($atts)
     }
     return $result;
 }
-add_shortcode('cp_tickets_grid', 'tickets_grid_sc');
+add_shortcode('cp_tickets_grid', 'cpt_tickets_grid_sc');
 
 
-function ticket_add_sc()
+function cpt_ticket_add_sc()
 {
     $result = '';
     ob_start();
@@ -173,5 +172,5 @@ function ticket_add_sc()
     }
     return $result;
 }
-add_shortcode('cp_ticket_add', 'ticket_add_sc');
+add_shortcode('cp_ticket_add', 'cpt_ticket_add_sc');
 ?>
