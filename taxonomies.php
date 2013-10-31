@@ -16,7 +16,7 @@
  */
 
 // Status Taxonomy
-function create_status_taxonomy()
+function cpt_create_status_taxonomy()
 {
     $labels = array(
         'name' => 'Ticket Status',
@@ -40,10 +40,10 @@ function create_status_taxonomy()
     );
     register_taxonomy('cp_ticket_status', 'cp_ticket', $args);    
 }
-add_action('init', 'create_status_taxonomy');
+add_action('init', 'cpt_create_status_taxonomy');
 
 // Ticket Types
-function create_type_taxonomy()
+function cpt_create_type_taxonomy()
 {
     $labels = array(
         'name' => 'Ticket Types',
@@ -67,10 +67,10 @@ function create_type_taxonomy()
     register_taxonomy('cp_ticket_types', 'cp_ticket', $args); 
     
 }
-add_action('init', 'create_type_taxonomy');
+add_action('init', 'cpt_create_type_taxonomy');
 
 // Product
-function create_product_taxonomy()
+function cpt_create_product_taxonomy()
 {
     $labels = array(
         'name' => 'Products',
@@ -94,6 +94,6 @@ function create_product_taxonomy()
     register_taxonomy('cp_support_product', 'cp_ticket', $args); 
     
 }
-add_action('init', 'create_product_taxonomy');
+add_action('init', 'cpt_create_product_taxonomy');
 
 ?>

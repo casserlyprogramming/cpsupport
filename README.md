@@ -40,15 +40,22 @@ getting worked on in future revisions to make it more user friendly and to use
 the features of the Status custom fields.
 
 There are a number of options that you can add to this shortcode:
+
     'cp_type' - Filter on the type of tickets (the slug) we show here, default is off.
+
     'cp_product' - Filter on the products (the slug), default is off.
-    'ul_css_class' - The list is a <ul> tag, use this to give it a css class
-    'li_css_class' - Use this to give the <li>s a css class
+
+    'ul_css_class' - The list is a ul tag, use this to give it a css class
+
+    'li_css_class' - Use this to give the li's a css class
+
     'new_ticket_page' - if this is set, it will show a link to the set page for creating
                         a new ticket.
+
     'new_ticket_class' - a class for the above <a> tag for the new ticket link.
 
 [2] [cp_ticket_add]
+
 Shows a form that allows your customers to create a new ticket. You will then
 have that ticket show up in your back end and in the above tickets grid shortcode. 
 
@@ -62,9 +69,13 @@ How to contribute
 If you wish to contribute to this project, please follow the following steps:
 
 [1] Fork the repository on github
+
 [2] Create a branch for the commit
+
 [3] Code into that new branch
+
 [4] Send a pull request when you are done
+
 [5] Rinse and repeat
 
 Thanks for reading this simple documentation, please feel free to get in touch 
