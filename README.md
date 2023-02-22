@@ -10,7 +10,7 @@ continue development based on the Github Issues and tracking of issues on
 Wordpress too! 
 
 If you have any comments or suggestions, please feel free to contact us and we 
-will get back to you as soon as we can. http://casserlyprogramming.com/contact
+will get back to you as soon as we can. 
 
 =========
 How to use the plugin
